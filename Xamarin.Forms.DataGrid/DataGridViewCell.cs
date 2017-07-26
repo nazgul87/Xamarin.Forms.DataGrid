@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.DataGrid.Utils;
+﻿using System.Linq;
 
 namespace Xamarin.Forms.DataGrid
 {
@@ -87,7 +84,7 @@ namespace Xamarin.Forms.DataGrid
 										DataGrid.BorderThickness.VerticalThickness / 4),
 			};
 
-			_mainLayout.RowDefinitions.Add(new RowDefinition());
+			_mainLayout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 
 			if (!string.IsNullOrEmpty(DataGrid.ItemHeaderValue))
 			{
@@ -95,7 +92,7 @@ namespace Xamarin.Forms.DataGrid
 				{
 					TextColor = _textColor,
 					LineBreakMode = LineBreakMode.WordWrap,
-					VerticalTextAlignment=TextAlignment.Center
+					VerticalTextAlignment = TextAlignment.Center
 				};
 
 				var content = new ContentView()
@@ -105,7 +102,7 @@ namespace Xamarin.Forms.DataGrid
 				};
 
 				label.SetBinding(Label.TextProperty, new Binding(DataGrid.ItemHeaderValue));
-				_mainLayout.RowDefinitions.Insert(0, new RowDefinition { Height = new GridLength(30) });
+				_mainLayout.RowDefinitions.Insert(0, new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 				_mainLayout.Children.Add(content);
 				Grid.SetRow(content, 0);
 				Grid.SetColumn(content, 0);

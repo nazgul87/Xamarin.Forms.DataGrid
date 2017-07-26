@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Xamarin.Forms;
 
@@ -14,7 +11,14 @@ namespace DataGridSample
 			//Load the assembly
 			Xamarin.Forms.DataGrid.DataGridComponent.Init();
 
-			MainPage = new MainPage() { BindingContext = new ViewModels.MainViewModel() };
+			try
+			{
+
+				MainPage = new MainPage() { BindingContext = new ViewModels.MainViewModel() };
+			}
+			catch (Exception ex)
+			{
+			}
 		}
 
 		protected override void OnStart()

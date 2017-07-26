@@ -1,59 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Grid x:Name="self"
-      xmlns="http://xamarin.com/schemas/2014/forms"
-      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      xmlns:local="clr-namespace:Xamarin.Forms.DataGrid;assembly=XForms.DataGrid"
-      x:Class="Xamarin.Forms.DataGrid.DataGrid"
-      Padding="0"
-      RowSpacing="0">
+<?xml version="1.0" encoding="UTF-8" ?>
+<Grid x:Class="Xamarin.Forms.DataGrid.DataGrid"
+	  xmlns="http://xamarin.com/schemas/2014/forms"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	  xmlns:local="clr-namespace:Xamarin.Forms.DataGrid;assembly=XForms.DataGrid"
+	  x:Name="self"
+	  Padding="0"
+	  RowSpacing="0">
 
 	<Grid.RowDefinitions>
-		<RowDefinition Height="Auto"/>
-		<RowDefinition Height="*"/>
+		<RowDefinition Height="Auto" />
+		<RowDefinition Height="*" />
 	</Grid.RowDefinitions>
 
-	<Grid x:Name="_headerView" RowSpacing="0">
+	<Grid x:Name="_headerView"
+		  RowSpacing="0">
 		<Grid.Resources>
 			<ResourceDictionary>
-				<!--Default Header Style-->
-				<Style x:Key="HeaderDefaultStyle" TargetType="Label">
-					<Setter Property="FontSize" Value="{Binding HeaderFontSize, Source={x:Reference self}}"/>
-					<Setter Property="FontAttributes" Value="Bold"/>
-					<Setter Property="HorizontalOptions" Value="Center"/>
-					<Setter Property="VerticalOptions" Value="Center"/>
-					<Setter Property="TextColor" Value="{Binding HeaderTextColor,Source={x:Reference self}}"/>
-					<Setter Property="LineBreakMode" Value="WordWrap"/>
+				<!--  Default Header Style  -->
+				<Style x:Key="HeaderDefaultStyle"
+					   TargetType="Label">
+					<Setter Property="FontSize" Value="{Binding HeaderFontSize, Source={x:Reference self}}" />
+					<Setter Property="FontAttributes" Value="Bold" />
+					<Setter Property="HorizontalOptions" Value="Center" />
+					<Setter Property="VerticalOptions" Value="Center" />
+					<Setter Property="TextColor" Value="{Binding HeaderTextColor, Source={x:Reference self}}" />
+					<Setter Property="LineBreakMode" Value="WordWrap" />
 				</Style>
 				<Style TargetType="Grid">
-					<Setter Property="BackgroundColor" Value="{Binding HeaderBackground,Source={x:Reference self}}"/>
+					<Setter Property="BackgroundColor" Value="{Binding HeaderBackground, Source={x:Reference self}}" />
 				</Style>
-				<Style x:Key="ImageStyleBase" TargetType="Image">
-					<Setter Property="Aspect" Value="AspectFill"/>
-					<Setter Property="VerticalOptions" Value="Center"/>
-					<Setter Property="HorizontalOptions" Value="Center"/>
-					<Setter Property="HeightRequest" Value="5"/>
-					<Setter Property="WidthRequest" Value="9"/>
-					<Setter Property="Margin" Value="0,0,4,0"/>
+				<Style x:Key="ImageStyleBase"
+					   TargetType="Image">
+					<Setter Property="Aspect" Value="AspectFill" />
+					<Setter Property="VerticalOptions" Value="Center" />
+					<Setter Property="HorizontalOptions" Value="Center" />
+					<Setter Property="HeightRequest" Value="5" />
+					<Setter Property="WidthRequest" Value="9" />
+					<Setter Property="Margin" Value="0,0,4,0" />
 				</Style>
-				<Style x:Key="AscendingIconStyle" TargetType="Image" BasedOn="{StaticResource ImageStyleBase}">
-					<Setter Property="Source" Value="{Binding AscendingIcon, Source={x:Reference self}}"/>
+				<Style x:Key="AscendingIconStyle"
+					   BasedOn="{StaticResource ImageStyleBase}"
+					   TargetType="Image">
+					<Setter Property="Source" Value="{Binding AscendingIcon, Source={x:Reference self}}" />
 				</Style>
-				<Style x:Key="DescendingIconStyle" TargetType="Image" BasedOn="{StaticResource ImageStyleBase}">
-					<Setter Property="Source" Value="{Binding DescendingIcon, Source={x:Reference self}}"/>
+				<Style x:Key="DescendingIconStyle"
+					   BasedOn="{StaticResource ImageStyleBase}"
+					   TargetType="Image">
+					<Setter Property="Source" Value="{Binding DescendingIcon, Source={x:Reference self}}" />
 				</Style>
 			</ResourceDictionary>
 		</Grid.Resources>
 	</Grid>
 
-	<ListView x:Name="_listView" Grid.Row="1"
-            CachingStrategy="RecycleElement"
-            SeparatorVisibility="Default"
-						SeparatorColor="{Binding BorderColor, Source={x:Reference self}}"
-            RowHeight="{Binding RowHeight, Source={x:Reference self}}">
+	<ListView x:Name="_listView"
+			  Grid.Row="1"
+			  CachingStrategy="RecycleElement"
+			  RowHeight="{Binding RowHeight, Source={x:Reference self}}"
+			  SeparatorColor="{Binding BorderColor, Source={x:Reference self}}"
+			  SeparatorVisibility="Default">
 		<ListView.ItemTemplate>
-			<local:DataGridRowTemplateSelector/>
+			<local:DataGridRowTemplateSelector />
 		</ListView.ItemTemplate>
 	</ListView>
-	<ContentView x:Name="_noDataView" Grid.RowSpan="2" IsVisible="False"/>
+	<ContentView x:Name="_noDataView"
+				 Grid.RowSpan="2"
+				 IsVisible="False" />
 
 </Grid>
