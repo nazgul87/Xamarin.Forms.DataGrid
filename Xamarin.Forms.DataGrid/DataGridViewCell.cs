@@ -89,7 +89,7 @@ namespace Xamarin.Forms.DataGrid
 
 			_mainLayout.RowDefinitions.Add(new RowDefinition());
 
-			if (!string.IsNullOrEmpty(DataGrid.GroupedValue))
+			if (!string.IsNullOrEmpty(DataGrid.ItemHeaderValue))
 			{
 				var label = new Label
 				{
@@ -104,7 +104,7 @@ namespace Xamarin.Forms.DataGrid
 					Padding = new Thickness(10, 0, 0, 0)
 				};
 
-				label.SetBinding(Label.TextProperty, new Binding(DataGrid.GroupedValue));
+				label.SetBinding(Label.TextProperty, new Binding(DataGrid.ItemHeaderValue));
 				_mainLayout.RowDefinitions.Insert(0, new RowDefinition { Height = new GridLength(30) });
 				_mainLayout.Children.Add(content);
 				Grid.SetRow(content, 0);

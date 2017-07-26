@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Xamarin.Forms.DataGrid</RootNamespace>
-    <AssemblyName>Xamarin.Forms.DataGrid</AssemblyName>
+    <AssemblyName>XForms.DataGrid</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -33,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\XForms.DataGrid.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ColumnCollection.cs" />
