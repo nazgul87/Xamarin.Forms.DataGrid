@@ -17,12 +17,12 @@ namespace Xamarin.Forms.DataGrid
 			BindableProperty.Create(nameof(Index), typeof(int), typeof(DataGridViewCell), 0,
 				propertyChanged: (b, o, n) => (b as DataGridViewCell).UpdateBackgroundColor());
 
-        public static readonly BindableProperty RowContextProperty =
-            BindableProperty.Create(nameof(RowContext), typeof(object), typeof(DataGridViewCell), null);
-        #endregion
+		public static readonly BindableProperty RowContextProperty =
+			BindableProperty.Create(nameof(RowContext), typeof(object), typeof(DataGridViewCell), null);
+		#endregion
 
-        #region properties
-        protected override void OnBindingContextChanged()
+		#region properties
+		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged();
 			if (BindingContext != null)
@@ -41,15 +41,15 @@ namespace Xamarin.Forms.DataGrid
 			set { SetValue(IndexProperty, value); }
 		}
 
-        public object RowContext
-        {
-            get { return GetValue(RowContextProperty); }
-            set { SetValue(RowContextProperty, value); }
-        }
-        #endregion
+		public object RowContext
+		{
+			get { return GetValue(RowContextProperty); }
+			set { SetValue(RowContextProperty, value); }
+		}
+		#endregion
 
-        #region Fields
-        static DataGridViewCell _previouslySelectedViewCell;
+		#region Fields
+		static DataGridViewCell _previouslySelectedViewCell;
 		static object _previouslySelectedBindingContext;
 
 		Grid _mainLayout;
@@ -81,11 +81,36 @@ namespace Xamarin.Forms.DataGrid
 			_mainLayout = new Grid()
 			{
 				BackgroundColor = DataGrid.BorderColor,
-				RowSpacing = 0,
+				RowSpacing = DataGrid.BorderThickness.HorizontalThickness / 2,
 				ColumnSpacing = DataGrid.BorderThickness.HorizontalThickness / 2,
 				Padding = new Thickness(DataGrid.BorderThickness.HorizontalThickness / 2,
 										DataGrid.BorderThickness.VerticalThickness / 4),
 			};
+
+			_mainLayout.RowDefinitions.Add(new RowDefinition());
+
+			if (!string.IsNullOrEmpty(DataGrid.GroupedValue))
+			{
+				var label = new Label
+				{
+					TextColor = _textColor,
+					LineBreakMode = LineBreakMode.WordWrap,
+					VerticalTextAlignment=TextAlignment.Center
+				};
+
+				var content = new ContentView()
+				{
+					Content = label,
+					Padding = new Thickness(10, 0, 0, 0)
+				};
+
+				label.SetBinding(Label.TextProperty, new Binding(DataGrid.GroupedValue));
+				_mainLayout.RowDefinitions.Insert(0, new RowDefinition { Height = new GridLength(30) });
+				_mainLayout.Children.Add(content);
+				Grid.SetRow(content, 0);
+				Grid.SetColumn(content, 0);
+				Grid.SetColumnSpan(content, DataGrid.Columns.Count);
+			}
 
 			foreach (var col in DataGrid.Columns)
 			{
@@ -93,14 +118,14 @@ namespace Xamarin.Forms.DataGrid
 				View cell;
 
 				if (col.CellTemplate != null)
-                {
-                    cell = new ContentView() { Content = col.CellTemplate.CreateContent() as View };
-                    if (col.PropertyName != null)
-                    {
-                        cell.SetBinding(BindableObject.BindingContextProperty, 
-                            new Binding(col.PropertyName, source: RowContext));
-                    }
-                }
+				{
+					cell = new ContentView() { Content = col.CellTemplate.CreateContent() as View };
+					if (col.PropertyName != null)
+					{
+						cell.SetBinding(BindableObject.BindingContextProperty,
+							new Binding(col.PropertyName, source: RowContext));
+					}
+				}
 				else
 				{
 					var text = new Label
@@ -122,8 +147,9 @@ namespace Xamarin.Forms.DataGrid
 					};
 				}
 
-                _mainLayout.Children.Add(cell);
+				_mainLayout.Children.Add(cell);
 				Grid.SetColumn(cell, DataGrid.Columns.IndexOf(col));
+				Grid.SetRow(cell, _mainLayout.RowDefinitions.Count - 1);
 			}
 
 			View = _mainLayout;
@@ -133,7 +159,7 @@ namespace Xamarin.Forms.DataGrid
 		{
 			int index = Index;
 			var items = DataGrid?.InternalItems;
-			
+
 			if (items != null)
 				index = items.IndexOf(BindingContext);
 

@@ -180,6 +180,9 @@ namespace Xamarin.Forms.DataGrid
 					if (o != n)
 						(b as DataGrid)._noDataView.Content = n as View;
 				});
+
+		public static readonly BindableProperty ItemHeaderValueProperty =
+			BindableProperty.Create(nameof(ItemHeaderValue), typeof(string), typeof(DataGrid), propertyChanged: (b, o, n) => { });
 		#endregion
 
 		#region Properties
@@ -361,6 +364,12 @@ namespace Xamarin.Forms.DataGrid
 		{
 			get { return (View)GetValue(NoDataViewProperty); }
 			set { SetValue(NoDataViewProperty, value); }
+		}
+
+		public string ItemHeaderValue
+		{
+			get { return (string)GetValue(ItemHeaderValueProperty); }
+			set { SetValue(ItemHeaderValueProperty, value); }
 		}
 		#endregion
 
