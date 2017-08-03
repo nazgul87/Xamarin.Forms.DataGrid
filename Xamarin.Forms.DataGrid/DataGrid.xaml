@@ -2,7 +2,7 @@
 <Grid x:Class="Xamarin.Forms.DataGrid.DataGrid"
 	  xmlns="http://xamarin.com/schemas/2014/forms"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	  xmlns:local="clr-namespace:Xamarin.Forms.DataGrid;assembly=XForms.DataGrid"
+	  xmlns:local="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
 	  x:Name="self"
 	  Padding="0"
 	  RowSpacing="0">

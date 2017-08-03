@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+        <id>SCV.DataGrid.XForms</id>
+        <version>1.0.0.0-pre2</version>
+        <title>XForms DataGrid</title>
+        <authors>Gustavo Saldaña</authors>
+        <owners>Gustavo Saldaña</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Control DataGrid para apps en Xamarin.Forms</description>
+        <releaseNotes>
+		- Version inicial
+		- Soporte para NET Standard 1.3
+		</releaseNotes>
+        <copyright>Copyright 2017</copyright>
+        <tags>Xamarin Forms Datagrid PCL</tags>
+        <dependencies>
+			<group targetFramework=".NETPortable0.0-Profile7">
+                <dependency id="Xamarin.Forms" version="2.3.4.247" />
+            </group>
+			<group targetFramework="netstandard1.3">
+                <dependency id="Xamarin.Forms" version="2.3.5.256-pre6" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+		<!--Referencias para PCL-->
+        <file src="Xamarin.Forms.DataGrid\bin\Release\Xamarin.Forms.DataGrid.dll" target="lib\portable-wp80+win8+wpa81+MonoAndroid10+Xamarin.iOS10+net45+net46\Xamarin.Forms.DataGrid.dll" />
+        <file src="Xamarin.Forms.DataGrid\bin\Release\Xamarin.Forms.DataGrid.XML" target="lib\portable-wp80+win8+wpa81+MonoAndroid10+Xamarin.iOS10+net45+net46\Xamarin.Forms.DataGrid.XML" />
+		
+		<!--NET Standard-->
+		<file src="Xamarin.Forms.DataGrid\bin\Release\Xamarin.Forms.DataGrid.dll" target="lib\netstandard1.3\Xamarin.Forms.DataGrid.dll" />
+        <file src="Xamarin.Forms.DataGrid\bin\Release\Xamarin.Forms.DataGrid.XML" target="lib\netstandard1.3\Xamarin.Forms.DataGrid.XML" />
+    </files>
+</package>

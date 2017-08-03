@@ -3,7 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="DataGridSample.MainPage"
 			 Title="DataGrid Test"
-			 xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=XForms.DataGrid"
+			 xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
 			 xmlns:conv="clr-namespace:DataGridSample.Views.Converters;assembly=DataGridSample">
 	<ContentView BackgroundColor="White"
 				 Padding="20">
