@@ -12,10 +12,10 @@
 					 SelectionEnabled="True"
 					 SelectedItem="{Binding SelectedTeam}"
 					 RowHeight="70"
-					 HeaderHeight="50"
 					 BorderColor="#CCCCCC"
 					 HeaderBackground="#E0E6F8"
 					 PullToRefreshCommand="{Binding RefreshCommand}"
+					 HeaderHeight="0"
 					 IsRefreshing="{Binding IsRefreshing}"
 					 ItemHeaderValue="Name"
 					 ActiveRowColor="#8899AA">
